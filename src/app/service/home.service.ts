@@ -107,6 +107,25 @@ getProductById(productId: number):Observable<any> {
 
 
 
+getProductimageDesbyProductId(payload={"category":"Sporting Goods","number":20}) {
+  // Convert the payload to JSON string
+  const payloadString = JSON.stringify(payload);
+
+  // Set the Content-Type header to application/json
+  const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+  // Send the POST request with the JSON payload and headers
+  return this.http.post<any>('https://test.negbuy.com/api/homepage_single_category_products', payloadString, { headers: headers });
+}
+
+
+
+
+
+
+
+
+
 private handleError(error: HttpErrorResponse) {
   if (error.error instanceof ErrorEvent) {
     // A client-side or network error occurred. Handle it accordingly.

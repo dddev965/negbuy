@@ -1,11 +1,7 @@
 
 <app-mainheader></app-mainheader>
 <!-- <app-subheader></app-subheader> -->
-<ng-container >
- {{ productdata.product_title }}
-<video width="320" height="240" controls src={{video}}>
-  Your browser does not support the video tag.
-</video>
+
 
   <div class="productPage bb" >
    
@@ -180,17 +176,19 @@
       <div class="cards">
         <div class="multiMedia">
           <!-- <iframe src="{{productdata.video}}"></iframe> -->
-          <video width="320" height="240" controls>
-            <source src="{{productdata.video}}" type="video/mp4">
-            
+          <video width="320" height="240" controls src={{productdata.video}}>
             Your browser does not support the video tag.
           </video>
+          <!-- <video width="320" height="240" controls src={{video}}>
+            Your browser does not support the video tag.
+          </video> -->
+
         </div>
         <div class="cards-details">
           <div class="title">
             Lorem Ipsum is simply dummy text of the printing and typesetting
           </div>
-          <div class="bb">
+          <div class="cards-details-desc">
             {{productdata.detailed_desc}}
           </div>
         </div>
@@ -727,4 +725,3 @@
       </div>
     </div>
   </div>
-</ng-container>
