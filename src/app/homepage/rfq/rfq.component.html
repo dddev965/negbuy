@@ -1,0 +1,78 @@
+<div class="container-fluid ">
+    <div class="row1">
+     <div class="col1">
+      <div class="formDiv">
+          <form class="pt-1" 
+          (ngSubmit)="onClickSubmit(formdata.value)" >
+            <div class="rfq">
+              <div class="rfq-Lable">
+                <label for=""> Your Requirment </label>
+              </div>
+              <div class="rfq-Input">
+                <input type="text" name="userRequirment"
+                 formControlName = "userRequirment" class="" placeholder="Enter Here..." />
+              </div>
+            </div>
+  
+            <div class="rfq">
+              <div class="rfq-Lable">
+                <label for=""> Delivery Date </label>
+              </div>
+              <div class="rfq-Input">
+                <input type="date"
+                name="deliveryDate"
+                formControlName = "deliveryDate"
+                class="" placeholder="Enter Here..." />
+              </div>
+            </div>
+  
+            <div class="rfq">
+              <div class="rfq-Lable">
+                <label for=""> Quantity </label>
+              </div>
+              <div class="rfq-Input">
+                <input type="number"
+                name="quanitity"
+                formControlName = "quanitity"
+                class="" placeholder="Enter Here..." />
+              </div>
+            </div>
+  
+            <div class="rfq">
+              <div class="rfq-Lable">
+                <label for=""> Target price </label>
+              </div>
+              <div class="rfq-Input">
+                <input type="number"
+                name="targetPrice"
+                formControlName="targetPrice"
+                class="" placeholder="Enter Price Here..." />
+              </div>
+            </div>
+  
+            <div class="btn-Div">
+              <button class="" type="number" placeholder="Enter Here...">
+                Submit
+              </button>
+            </div>
+            <p> Textbox result is: {{userRequirment}} </p>
+          </form>
+        </div>
+     </div>
+      <div class="col2">
+          <div class="LookingSomethingDiv">
+              <p class="frq-head">
+                  Looking For something !!!
+              </p>
+              <p class="frq-tagline">
+                  Don't worry we got you just fill up the side form
+              </p>
+              <p class="frq-text">
+                  Fill up product name, the price limit,quantity and the delivery date up to which you want to deliverd
+              </p>
+      <p class="frq-tagline2">Keep shopping :) </p>
+          </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,15 @@
+$background-color_1: aqua;
+
+.carousel {
+  width: 64vw;
+  background-color: $background-color_1;
+  margin: 2% 0 2% 3%;
+}
+.carousel-inner {
+  height: 60vh;
+}
+.carousel-item {
+  img {
+    height: 70vh;
+  }
+}

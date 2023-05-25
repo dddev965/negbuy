@@ -1,0 +1,35 @@
+
+<div id="carouselExampleAutoplaying" class="carousel slide carousel-fade"data-bs-ride="carousel"   >
+    <div class="carousel-indicators border ">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active indi-btn " aria-current="true" aria-label="Slide 1"></button>
+
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class=" indi-btn " aria-label="Slide 2"></button>
+
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class=" indi-btn " aria-label="Slide 3"></button>
+      </div>
+
+    <p class="news ">News</p>
+    <div class="carousel-inner " >
+      <ng-container *ngFor="let mydata of getData.data" >
+      <div class="carousel-item active" data-bs-interval="4000">
+        <img src="{{mydata.image}}"  class="d-block w-100" alt="...">
+
+      <div class="text-section"  >
+        <p class="heading">{{mydata.heading }}</p>
+        <p class="sub-text "> {{mydata.description}} </p>
+      </div>
+      </div>
+    </ng-container>
+    </div>
+    <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <!-- <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span> -->
+    <img src="../../assets/News/arrow_forward_ios.svg" alt="">
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <!-- <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span> -->
+    <img src="../../assets/News/arrow_forward_.svg" alt="">
+
+    </button>
+  </div>

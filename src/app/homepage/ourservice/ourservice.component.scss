@@ -1,0 +1,39 @@
+$font-family_1: Montserrat;
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 2% 0;
+}
+.col1 {
+	text-align: center;
+	height: 11.1rem;
+	width: 18.2%;
+	min-width: 200px;
+	border: 1px solid red;
+	margin: 2% 1% 2% 0%;
+	border: 1px solid #E6E6E6;
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.09);
+}
+img {
+	margin: 3% 0;
+	height: 9vh;
+	width: 26%;
+}
+.heading {
+	font-family: $font-family_1;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 19px;
+	letter-spacing: 0em;
+	text-align: center;
+}
+.sub-text {
+	font-family: $font-family_1;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 16px;
+	letter-spacing: 0em;
+	text-align: center;
+}

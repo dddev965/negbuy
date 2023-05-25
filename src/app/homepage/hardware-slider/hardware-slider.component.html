@@ -1,0 +1,114 @@
+<p class="animal-heading mt-5">Hardware</p>
+
+<!-- <div class="hr bb"></div> -->
+<div class="container-fluid mb-4">
+  <!-- <button (click)="getData()">Get Data</button> -->
+  <ng-container bb>
+    <carousel class="main-cont pt-4" [autoplay]="false">
+      <div
+        class="carousel-cell"
+        (click)="goToProduct()"
+        [routerLink]=""
+        *ngFor="let mySlider of getSlider.data"
+      >
+        <img
+          loading="lazy"
+          class="card-img"
+          src="{{ mySlider.product_image }}"
+          alt=""
+          loading="lazy"
+        />
+        <div class="infoDiv">
+          <p class="text-heading">
+            <abbr title="{{ mySlider.product_name }}">{{
+              mySlider.product_name
+            }}</abbr>
+          </p>
+          <p class="sub-text1">{{ mySlider.brand }}</p>
+        </div>
+        <div class="infoDiv">
+          <p class="sub-text2">{{ mySlider.city }}</p>
+          <span class="country d-flex">
+            <img
+              loading="lazy"
+              class="country-img"
+              src="../../assets/AnimalSlider/country/flag-india.png"
+              alt=""
+            /><span class="country-text">{{ mySlider.country }}</span>
+          </span>
+        </div>
+        <div class="infoDiv">
+          <p class="rating">
+            {{ mySlider.rating }}
+            <img
+              loading="lazy"
+              src="../../assets/AnimalSlider/country/star.png"
+              alt=""
+            />
+          </p>
+        </div>
+        <div class="infoDiv">
+          <p class="price">
+            {{ mySlider.price }}
+          </p>
+          <span class="previousPrice">{{ mySlider.mrp }}</span>
+          <span class="offerpri">({{ mySlider.discount }}% Off )</span>
+        </div>
+      </div>
+    </carousel>
+
+
+    <carousel class="main-cont pt-4" [autoplay]="false">
+      <div
+        class="carousel-cell"
+        (click)="goToProduct()"
+        [routerLink]=""
+        *ngFor="let mySlider of getSlider.data"
+      >
+        <img
+          loading="lazy"
+          class="card-img"
+          src="{{ mySlider.product_image }}"
+          alt=""
+          loading="lazy"
+        />
+        <div class="infoDiv">
+          <p class="text-heading">
+            <abbr title="{{ mySlider.product_name }}">{{
+              mySlider.product_name
+            }}</abbr>
+          </p>
+          <p class="sub-text1">{{ mySlider.brand }}</p>
+        </div>
+        <div class="infoDiv">
+          <p class="sub-text2">{{ mySlider.city }}</p>
+          <span class="country d-flex">
+            <img
+              loading="lazy"
+              class="country-img"
+              src="../../assets/AnimalSlider/country/flag-india.png"
+              alt=""
+            /><span class="country-text">{{ mySlider.country }}</span>
+          </span>
+        </div>
+        <div class="infoDiv">
+          <p class="rating">
+            {{ mySlider.rating }}
+            <img
+              loading="lazy"
+              src="../../assets/AnimalSlider/country/star.png"
+              alt=""
+            />
+          </p>
+        </div>
+        <div class="infoDiv">
+          <p class="price">
+            {{ mySlider.price }}
+          </p>
+          <span class="previousPrice">{{ mySlider.mrp }}</span>
+          <span class="offerpri">({{ mySlider.discount }}% Off )</span>
+        </div>
+      </div>
+    </carousel>
+  </ng-container>
+</div>

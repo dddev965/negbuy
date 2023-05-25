@@ -1,0 +1,276 @@
+$color_1: #ffffff;
+$font-family_1: Montserrat;
+$border-color_1: linear-gradient( to left, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1) );
+
+/* ==================== */
+.container1 {
+	width: 100%;
+}
+.row1 {
+	display: flex;
+	justify-content: space-around;
+	margin: 0 0 0 1rem;
+}
+.rowleft {
+	display: flex;
+	justify-content: space-around;
+	margin: 0 0 0 4rem;
+}
+// .col1 {
+// 	// background-image: url("../../../assets/sportsGood/sportsGoodposter.webp");
+// 	height: 24.5rem;
+// 	width: 21.8%;
+// 	background-size: cover;
+// 	margin: 0 -33px 0 -92px;
+// 	img {
+// 		width: 100%;
+// 		height: 100%;
+// 	}
+// }
+.poster-Text {
+	font-family: $font-family_1;
+	font-size: 30px;
+	font-weight: 600;
+	line-height: 35px;
+	letter-spacing: 0em;
+	text-align: left;
+	text-align: center;
+}
+ul {
+	text-decoration: none;
+	padding-left: 0;
+	margin: 28% 0 0 0;
+	background: linear-gradient(360deg, #141414 -19.2%, rgba(78, 78, 78, 0.53047) 70.53%, rgba(217, 217, 217, 0) 78.89%);
+	li {
+		a {
+			text-decoration: none;
+			margin: 0 1.1rem;
+			font-family: $font-family_1;
+			font-size: 16px;
+			font-weight: 500;
+			line-height: 19px;
+			letter-spacing: 0em;
+			text-align: left;
+			color: $color_1;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+.poster-head {
+	margin: 1rem 5%;
+	a {
+		text-decoration: none;
+		font-family: $font-family_1;
+		font-size: 1.8rem;
+		font-weight: 600;
+		line-height: 35px;
+		letter-spacing: 0em;
+		color: $color_1;
+	}
+}
+li {
+	width: 100%;
+	list-style-type: none;
+	margin: 4% 0px;
+}
+.myunderline {
+	border: 1px solid #fff;
+	margin: -1rem auto;
+	width: 95%;
+}
+.view-btn {
+	background: #f01727;
+	border-radius: 3px;
+	padding: 2% 4%;
+	margin: 0 0 0 8em;
+	cursor: pointer;
+	font-family: $font-family_1;
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 1rem;
+	letter-spacing: 0em;
+	color: $color_1;
+	&:hover {
+		background: #8d252c;
+	}
+}
+.col2 {
+	width: 74%;
+	margin: 0px 0 0 -48px;
+}
+hr {
+	background-image: linear-gradient(to right, rgba(255,0,0,0), black);
+	border: 0;
+	height: 2px;
+	opacity: 1;
+}
+.animalheading {
+	font-family: $font-family_1;
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 1.5rem;
+	letter-spacing: 0em;
+	text-align: right;
+}
+.animalheadingleft{
+	font-family: $font-family_1;
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 1.5rem;
+	letter-spacing: 0em;
+	text-align: left;
+}
+.sub-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	> {
+		:nth-child(1) {
+			margin: 0 0 2% 0;
+		}
+	}
+}
+.animal-contt {
+	display: flex;
+	width: 32%;
+	height: 90%;
+	background: #ffffff;
+	box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.16);
+	margin: 0 0 1% 0;
+	img {
+		width: 34%;
+		height: 135px;
+		margin: 3% 3%;
+	}
+}
+.cont-Subhead {
+	width: 100%;
+	margin: 5% 0;
+	font-family: $font-family_1;
+	font-size: 1.1em;
+	font-weight: 600;
+	line-height: 23px;
+	letter-spacing: 0em;
+	text-align: left;
+	word-spacing: 1%;
+}
+.cont-subtext {
+	margin-bottom: 1%;
+	font-family: $font-family_1;
+	font-size: 0.8em;
+	font-weight: 500;
+}
+.hr {
+	opacity: 0.1;
+	border-color: $border-color_1;
+}
+@media only screen and (max-width: 1104px) {
+	.cont-Subhead {
+		font-size: 1em;
+	}
+}
+@media only screen and (max-width: 992px) {
+	.row1 {
+		display: flex;
+		flex-direction: column;
+	}
+	.col1 {
+		border: 1px solid blue;
+		width: 100%;
+		border: 1px solid blue;
+		// background-image: url("../../../assets/sportsGood/sportsGoodposter.webp");
+		background-size: cover;
+		background-position: 0rem -11rem;
+		background-repeat: no-repeat;
+		img {
+			width: 100%;
+			height: 60vh;
+		}
+	}
+	.col2 {
+		width: 100%;
+		margin: 3% 0;
+	}
+	ul {
+		text-decoration: none;
+		padding-left: 0;
+		margin: 6% 0 0 0;
+		li {
+			a {
+				margin: 2em;
+			}
+		}
+	}
+	li {
+		margin: 2% 0px;
+	}
+	.view-btn {
+		padding: 2% 2%;
+	}
+}
+@media only screen and (max-width: 783px) {
+	.sub-container {
+		display: flex;
+		justify-content: space-around;
+		> {
+			:nth-child(3) {
+				display: none;
+			}
+			:nth-child(6) {
+				display: none;
+			}
+		}
+	}
+	.animal-contt {
+		display: flex;
+		width: 40%;
+	}
+}
+@media only screen and (max-width: 1401px) {
+	.poster-head {
+		a {
+			font-size: 1.6rem;
+		}
+	}
+}
+@media only screen and (max-width: 1348px) {
+	.view-btn {
+		padding: 2% 4%;
+		margin: 0 0 0 15%;
+		cursor: pointer;
+	}
+}
+@media only screen and (max-width: 1256px) {
+	.poster-head {
+		a {
+			font-size: 1.4rem;
+		}
+	}
+	.view-btn {
+		padding: 2% 4%;
+		margin: 0 0 0 20%;
+		cursor: pointer;
+	}
+	.storage-org {
+		display: none;
+	}
+}
+@media only screen and (max-width: 1096px) {
+	.poster-head {
+		a {
+			font-size: 1.2rem;
+		}
+	}
+	.view-btn {
+		padding: 2% 4%;
+		margin: 0 0 0 10%;
+		cursor: pointer;
+	}
+}
+@media only screen and (max-width:1258px) {
+	.res-hide {
+		display: none;
+	}
+}

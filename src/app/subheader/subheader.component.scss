@@ -1,0 +1,250 @@
+$color_1: #f54646;
+$color_2: #5a5a5a;
+$font-family_1: Montserrat;
+$background-color_1: #fff;
+$background-color_2: #f1f1f1;
+
+/* width */
+/* Track */
+/* Handle */
+/* Handle on hover */
+/* .sub-col:hover  .BabyToddlerHover,
+  .heading:hover .BabyToddlerHover {
+    display: block;
+  } */
+/* .anchorimage:hover ~ .ElectronicHover,
+  .heading:hover ~ .ElectronicHover {
+    display: block;
+  } */
+/* .anchorimage:hover ~ .PetCareHover,
+  .heading:hover ~ .PetCareHover {
+    display: block;
+  }
+   */
+/* .anchorimage:hover ~ .MechanicalHover,
+  .heading:hover ~ .MechanicalHover {
+    display: block;
+  } */
+/* .anchorimage:hover ~ .FabricHover,
+  .heading:hover ~ .FabricHover {
+    display: block;
+  } */
+/* .anchorimage:hover ~ .AutomobileHover,
+  .heading:hover ~ .AutomobileHover {
+    display: block;
+  }
+   */
+/* .anchorimage:hover ~ .healthCareHover,
+  .heading:hover ~ .healthCareHover {
+    display: block;
+  } */
+/* .anchorimage:hover ~ .AllcategoriesHover,
+  .heading:hover ~ .AllcategoriesHover {
+    display: block;
+  } */
+::-webkit-scrollbar {
+	width: 5px;
+	height: 10px;
+}
+::-webkit-scrollbar-track {
+	background: white;
+	border-radius: 20px;
+}
+::-webkit-scrollbar-thumb {
+	background: rgb(210, 210, 210);
+	border-radius: 50px;
+	&:hover {
+		background: rgb(210, 210, 210);
+	}
+}
+.container1 {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	border: 1px solid #e0dddd;
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.07);
+	.col1 { margin: 0% 0 0 0;
+	width: 12%;
+	height: 90px;
+}
+} 
+
+	.col1 {
+		&:hover {
+			.sub-col {
+				border-top: 0;
+				border-right: 0;
+				border-left: 0;
+			}
+		}
+	}
+
+.sub-col {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	vertical-align: center;
+	align-items: center;
+	margin: 4% 0 0 0;
+}
+.anchorimage {
+	display: flex;
+	justify-content: center;
+	width: 25%;
+}
+.cateImg {
+	width: 100%;
+	margin: 3% 0 3% 0;
+}
+.heading {
+	text-align: center;
+	font-family: $font-family_1;
+	font-size: 0.9rem;
+	font-weight: 600;
+	line-height: 19px;
+	letter-spacing: 0em;
+	cursor: pointer;
+}
+.hovercol {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 70vh;
+	overflow: scroll;
+	background-color: $background-color_1;
+}
+.hoverHeading {
+	margin: 1% 1% 0% 0;
+	a {
+		&:hover {
+			text-decoration: underline !important;
+		}
+		font-family: $font-family_1;
+		font-size: 0.85rem;
+		font-weight: 600;
+		line-height: 23px;
+		letter-spacing: 0em;
+		text-align: left;
+		color: $color_1;
+	}
+}
+.hoverText {
+	margin: 1% 1% 0% 0;
+	a {
+		font-family: $font-family_1;
+		font-size: 0.8rem;
+		font-weight: 500;
+		line-height: 19px;
+		letter-spacing: 0em;
+		text-align: left;
+		color: $color_2;
+		&:hover {
+			font-weight: 650;
+		}
+	}
+}
+.hr {
+	margin: 6% 0px;
+	width: 80%;
+	border: 0.5px solid rgba(130, 130, 130, 0.35);
+}
+.BabyToddlerHover {
+	overflow: auto;
+	width: 99%;
+	position: absolute;
+	left: 6px;
+	top: 9.5rem;
+	height: 70vh;
+	background-color: $background-color_1;
+}
+.ElectronicHover {
+	&:hover {
+		background-color: $background-color_2;
+		transition: background-color 0.2s ease-in-out;
+	}
+	overflow: auto;
+	width: 99%;
+	position: absolute;
+	left: 6px;
+	top: 9.5rem;
+	height: 70vh;
+	background-color: $background-color_1;
+}
+.PetCareHover {
+	overflow: auto;
+	width: 99%;
+	position: absolute;
+	left: 6px;
+	top: 9.5rem;
+	height: 70vh;
+	background-color: $background-color_1;
+}
+.MechanicalHover {
+	overflow: auto;
+	width: 99%;
+	position: absolute;
+	left: 6px;
+	top: 9.5rem;
+	height: 70vh;
+	background-color: $background-color_1;
+}
+.FabricHover {
+	overflow: auto;
+	width: 99%;
+	position: absolute;
+	left: 6px;
+	top: 9.5rem;
+	height: 70vh;
+	background-color: $background-color_1;
+}
+.AutomobileHover {
+	overflow: auto;
+	width: 99%;
+	position: absolute;
+	left: 6px;
+	top: 9.5rem;
+	height: 70vh;
+	background-color: $background-color_1;
+}
+.healthCareHover {
+	width: 99%;
+	position: absolute;
+	left: 6px;
+	top: 9.5rem;
+	height: 70vh;
+	background-color: $background-color_1;
+}
+.AllcategoriesHover {
+	width: 99%;
+	position: absolute;
+	left: 6px;
+	top: 9.5rem;
+	height: 70vh;
+	background-color: $background-color_1;
+}
+@media only screen and (max-width: 992px) {
+	.healthCareHover {
+		top: 5.5rem;
+	}
+	.AutomobileHover {
+		top: 5.5rem;
+	}
+	.FabricHover {
+		top: 5.5rem;
+	}
+	.MechanicalHover {
+		top: 5.5rem;
+	}
+	.PetCareHover {
+		top: 15.5rem;
+	}
+	.ElectrnoicHover {
+		top: 15.5rem;
+	}
+	.AllcategoriesHover {
+		top: 15.5rem;
+	}
+}
