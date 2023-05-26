@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HomeService } from '../service/home.service';
+import { ProductpageService } from '../service/product/productpage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-product',
@@ -7,16 +7,21 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent {
-  productId: any
+  productId: any;
   // product: any;
-  productdata:any=[];
-video:any='';
-  
-  medium:boolean=false;
-  small:boolean=false;
-  large:boolean=false;
-  eLarger:boolean=false;
- 
+  productdata: any = [];
+  variants: any = [];
+  productReview:any=[];
+
+  reviewImage:any=[]
+  // imageDescription
+  imgDesc: any;
+
+  medium: boolean = false;
+  small: boolean = false;
+  large: boolean = false;
+  eLarger: boolean = false;
+
   carouselOptions = {
     loop: true,
     autoplay: true,
@@ -24,51 +29,62 @@ video:any='';
     items: 1,
   };
 
-  products:any=[]
+  products: any = [];
 
   constructor(
-    private myservice: HomeService,
-    private _ActivatedRoute: ActivatedRoute,
-    
-    ) {
-this.productId=this._ActivatedRoute
-
-    }
+    private productPage: ProductpageService,
+    private _ActivatedRoute: ActivatedRoute
+  ) {
+    this.productId = this._ActivatedRoute;
+  }
   productDetails: any = [];
-  
 
   ngOnInit() {
-
-this.productId= this._ActivatedRoute.snapshot.paramMap.get("productId");
-console.log(this.productId);
-
-
-this.myservice.getProductById(this.productId).
-subscribe((res) => {
-    // Handle the API response here
-    this.productdata=res.data
-console.log(res);
-
-this.video=this.productdata.video;
-console.log(this.video);
-
-  },
-  (error) => {
-    // Handle the API error here
-    console.error(error);
-  }
-);
-
-  }
-
-
-  getProductDetails() {
+    this.productId = this._ActivatedRoute.snapshot.paramMap.get('productId');
     console.log(this.productId);
-    
-    this.myservice.getProductById(this.productId).subscribe(
-      (response) => {
+
+    this.productPage.getProductById(this.productId).subscribe(
+      (res) => {
         // Handle the API response here
-        console.log(response);
+        this.productdata = res.data;
+        console.log(res);
+
+        this.variants = this.productdata.variants;
+        // console.log("yaha se aa rha h",this.variants);
+      },
+      (error) => {
+        // Handle the API error here
+        console.error(error);
+      }
+    );
+
+    // imageDescription API
+    this.productPage.getProductimageDesbyProductId(this.productId).subscribe(
+      (res) => {
+        // Handle the API response here
+        this.imgDesc = res.data;
+        console.log(this.imgDesc, 'getproductimagedes');
+
+        this.variants = this.productdata.variants;
+        // console.log("yaha se aa rha h",this.variants);
+      },
+      (error) => {
+        // Handle the API error here
+        console.error(error);
+      }
+    );
+
+    this.productPage.productReviewSection().subscribe(
+      (res) => {
+        // Handle the API response here
+        console.log(res, 'reviewSection');
+
+       this.productReview =res.data;
+       console.log(this.productReview);
+       this.reviewImage= res.data.files
+       console.log(this.reviewImage,"yaha se aygi image ");
+       
+       
       },
       (error) => {
         // Handle the API error here
@@ -77,17 +93,30 @@ console.log(this.video);
     );
   }
 
+  // getProductDetails() {
+  //   console.log(this.productId);
 
-  selectSize(size:any){
- if(size==="medium"){
-  this.medium=true;
-  this.small=false;
-  // this.large-false;
- }  else if (size==='small'){
-  this.small = true;
-  this.medium=false;
+  //   this.myservice.getProductById(this.productId).subscribe(
+  //     (response) => {
+  //       // Handle the API response here
+  //       console.log(response);
+  //     },
+  //     (error) => {
+  //       // Handle the API error here
+  //       console.error(error);
+  //     }
+  //   );
+  // }
 
- }
+  selectSize(size: any) {
+    if (size === 'medium') {
+      this.medium = true;
+      this.small = false;
+      // this.large-false;
+    } else if (size === 'small') {
+      this.small = true;
+      this.medium = false;
+    }
   }
 
   src = 'assets/Images/product.png';

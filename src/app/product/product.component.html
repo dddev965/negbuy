@@ -13,7 +13,7 @@
     <div class="productPage-details ">
       <div class="productImages">
         <div class="mainImg-container">
-          <img id="expandedImg" src="{{ productdata.main_image }}" />
+          <img id="expandedImg" src="{{ variants.main_image }}" />
         </div>
   
         <!-- The five columns -->
@@ -68,7 +68,7 @@
             <img src="assets/Images/info image png.png" alt="" />minimum order 60
             pieces
           </div>
-          <div class="color">Colour : <span>{{productdata.color}}</span></div>
+          <div class="color">Colour : <div class="border d-inline-block" *ngFor="let color of variants" >{{color.color}}&nbsp;</div></div>
           <div class="multipleImg">
             <img src="assets/Images/sample_product_1.png" alt="" class="image" />
             <img src="assets/Images/sample_product_1.png" alt="" class="image" />
@@ -82,7 +82,8 @@
             <img src="assets/Images/sample_product_1.png" alt="" class="image" />
           </div>
   
-          <div class="color">Size</div>
+          <div class="color">Size  </div>
+          
           <div class="sizeVariant">
             <div class="productSize" 
             (click)="selectSize('small')">Small</div>
@@ -193,60 +194,20 @@
           </div>
         </div>
       </div>
-      <div class="cards">
+      <div class="cards" *ngFor="let imagedesc of imgDesc ">
         <div class="multiMedia">
-          <img src="assets/Images/cardImg.png" alt="" />
+          <img src="{{imagedesc.image}}" alt="" />
         </div>
         <div class="cards-details">
           <div class="title">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
+            {{imagedesc.heading}}
           </div>
           <div>
-            Lktop publishing software like Aldus PageMaker including versions of
-            Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and
-            typesetti 1960s with the release of Letraset sheets containing Lorem
-            Ipsum passages, and more recently with desktop publishing software
-            like Aldus PageMr toong essentially unchanged. It was popularised in
-            the 1960s with the release of Letraset sheets containing
+           {{imagedesc.description}}
           </div>
         </div>
       </div>
-      <div class="cards">
-        <div class="multiMedia">
-          <img src="assets/Images/cardImg.png" alt="" />
-        </div>
-        <div class="cards-details">
-          <div class="title">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-          </div>
-          <div>
-            Lktop publishing software like Aldus PageMaker including versions of
-            Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and
-            typesetti 1960s with the release of Letraset sheets containing Lorem
-            Ipsum passages, and more recently with desktop publishing software
-            like Aldus PageMr toong essentially unchanged. It was popularised in
-            the 1960s with the release of Letraset sheets containing
-          </div>
-        </div>
-      </div>
-      <div class="cards">
-        <div class="multiMedia">
-          <img src="assets/Images/cardImg.png" alt="" />
-        </div>
-        <div class="cards-details">
-          <div class="title">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-          </div>
-          <div>
-            Lktop publishing software like Aldus PageMaker including versions of
-            Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and
-            typesetti 1960s with the release of Letraset sheets containing Lorem
-            Ipsum passages, and more recently with desktop publishing software
-            like Aldus PageMr toong essentially unchanged. It was popularised in
-            the 1960s with the release of Letraset sheets containing
-          </div>
-        </div>
-      </div>
+     
     </div>
   
     <div class="productInfoTitle">Product Information</div>
@@ -549,179 +510,42 @@
           </div>
         </div>
   
-        <div class="reviewCard">
+        <div class="reviewCard" *ngFor="let productReviews of productReview ">
+
+         
           <div class="rating">
             <div class="rating-star">
-              <div class="star">4.1 ☆</div>
-              <div>Amazing plastic Quality</div>
+              <div class="star">{{productReviews.rating}} ☆</div>
+              <div>{{productReviews.title}}</div>
             </div>
             <div><mat-icon>more_horiz</mat-icon></div>
           </div>
           <div class="reviewCard-desc">
-            <div class="reviewCard-images">
-              <div class="mainImg">
-                <img src="../../../assets/Images/product.png" alt="" />
+            <div class="reviewCard-images" >
+            <ng-container *ngFor="let reviews of productReviews.files">
+              <div class="mainImg" >
+                <img src="{{reviews}}" alt="" />
               </div>
               <div class="imgs">
-                <img src="../../../assets/Images/product.png" alt="" />
-                <img src="../../../assets/Images/product.png" alt="" />
-                <img src="../../../assets/Images/product.png" alt="" />
-                <img src="../../../assets/Images/product.png" alt="" />
+                <!-- <img src="../../../assets/Images/product.png" alt="" />
+                  
+                  <img src="../../../assets/Images/product.png" alt="" />
+                  <img src="../../../assets/Images/product.png" alt="" />
+                  <img src="../../../assets/Images/product.png" alt="" /> -->
+                </div>
+              </ng-container>
               </div>
-            </div>
             <div class="text">
-              Lktop publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and
-              typesetti 1960s with the release of Letraset sheets containing Lorem
-              Ipsum passages, and more recently with desktop publishing software
-              like Aldus PageMr toong essentially unchanged. It was popularised in
-              the 1960s with the release of Letraset sheets containing
+              {{productReviews.description}}
   
               <div class="customer">
-                <div class="customer-name">Hemant singh Bisht, Ahmadabad</div>
-                <div class="commentTime">posted 4 months ago</div>
-              </div>
-            </div>
-          </div>
-        </div><div class="reviewCard">
-          <div class="rating">
-            <div class="rating-star">
-              <div class="star">4.1 ☆</div>
-              <div>Amazing plastic Quality</div>
-            </div>
-            <div><mat-icon>more_horiz</mat-icon></div>
-          </div>
-          <div class="reviewCard-desc">
-            <div class="reviewCard-images">
-              <div class="mainImg">
-                <img src="../../../assets/Images/product.png" alt="" />
-              </div>
-              <div class="imgs">
-                <img src="../../../assets/Images/product.png" alt="" />
-                <img src="../../../assets/Images/product.png" alt="" />
-                <img src="../../../assets/Images/product.png" alt="" />
-                <img src="../../../assets/Images/product.png" alt="" />
-              </div>
-            </div>
-            <div class="text">
-              Lktop publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and
-              typesetti 1960s with the release of Letraset sheets containing Lorem
-              Ipsum passages, and more recently with desktop publishing software
-              like Aldus PageMr toong essentially unchanged. It was popularised in
-              the 1960s with the release of Letraset sheets containing
-  
-              <div class="customer">
-                <div class="customer-name">Hemant singh Bisht, Ahmadabad</div>
-                <div class="commentTime">posted 4 months ago</div>
-              </div>
-            </div>
-          </div>
-        </div><div class="reviewCard">
-          <div class="rating">
-            <div class="rating-star">
-              <div class="star">4.1 ☆</div>
-              <div>Amazing plastic Quality</div>
-            </div>
-            <div><mat-icon>more_horiz</mat-icon></div>
-          </div>
-          <div class="reviewCard-desc">
-            <div class="reviewCard-images">
-              <div class="mainImg">
-                <img src="../../../assets/Images/product.png" alt="" />
-              </div>
-              <div class="imgs">
-                <img src="../../../assets/Images/product.png" alt="" />
-                <img src="../../../assets/Images/product.png" alt="" />
-                <img src="../../../assets/Images/product.png" alt="" />
-                <img src="../../../assets/Images/product.png" alt="" />
-              </div>
-            </div>
-            <div class="text">
-              Lktop publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and
-              typesetti 1960s with the release of Letraset sheets containing Lorem
-              Ipsum passages, and more recently with desktop publishing software
-              like Aldus PageMr toong essentially unchanged. It was popularised in
-              the 1960s with the release of Letraset sheets containing
-  
-              <div class="customer">
-                <div class="customer-name">Hemant singh Bisht, Ahmadabad</div>
-                <div class="commentTime">posted 4 months ago</div>
+                <div class="customer-name"> {{productReviews.user}} {{productReviews.city}} </div>
+                <div class="commentTime"> {{productReviews.time}} </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="reviewCard">
-          <div class="rating">
-            <div class="rating-star">
-              <div class="star">4.1 ☆</div>
-              <div>Amazing plastic Quality</div>
-            </div>
-            <div><mat-icon>more_horiz</mat-icon></div>
-          </div>
-          <div class="reviewCard-desc">
-            <div class="reviewCard-images">
-              <div class="mainImg">
-                <img src="../../../assets/Images/product.png" alt="" />
-              </div>
-              <div class="imgs">
-                <img src="../../../assets/Images/product.png" alt="" />
-                <img src="../../../assets/Images/product.png" alt="" />
-                <img src="../../../assets/Images/product.png" alt="" />
-                <img src="../../../assets/Images/product.png" alt="" />
-              </div>
-            </div>
-            <div class="text">
-              Lktop publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and
-              typesetti 1960s with the release of Letraset sheets containing Lorem
-              Ipsum passages, and more recently with desktop publishing software
-              like Aldus PageMr toong essentially unchanged. It was popularised in
-              the 1960s with the release of Letraset sheets containing
-  
-              <div class="customer">
-                <div class="customer-name">Hemant singh Bisht, Ahmadabad</div>
-                <div class="commentTime">posted 4 months ago</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="reviewCard">
-          <div class="rating">
-            <div class="rating-star">
-              <div class="star">4.1 ☆</div>
-              <div>Amazing plastic Quality</div>
-            </div>
-            <div><mat-icon>more_horiz</mat-icon></div>
-          </div>
-          <div class="reviewCard-desc">
-            <div class="reviewCard-images">
-              <div class="mainImg">
-                <img src="../../../assets/Images/product.png" alt="" />
-              </div>
-              <div class="imgs">
-                <img src="../../../assets/Images/product.png" alt="" />
-                <img src="../../../assets/Images/product.png" alt="" />
-                <img src="../../../assets/Images/product.png" alt="" />
-                <img src="../../../assets/Images/product.png" alt="" />
-              </div>
-            </div>
-            <div class="text">
-              Lktop publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and
-              typesetti 1960s with the release of Letraset sheets containing Lorem
-              Ipsum passages, and more recently with desktop publishing software
-              like Aldus PageMr toong essentially unchanged. It was popularised in
-              the 1960s with the release of Letraset sheets containing
-  
-              <div class="customer">
-                <div class="customer-name">Hemant singh Bisht, Ahmadabad</div>
-                <div class="commentTime">posted 4 months ago</div>
-              </div>
-            </div>
-          </div>
-        </div>
+       
       </div>
     </div>
   </div>
