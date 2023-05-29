@@ -11,9 +11,9 @@ export class ProductComponent {
   // product: any;
   productdata: any = [];
   variants: any = [];
-  productReview:any=[];
+  productReview: any = [];
 
-  reviewImage:any=[]
+  reviewImage: any = []
   // imageDescription
   imgDesc: any;
 
@@ -63,9 +63,9 @@ export class ProductComponent {
       (res) => {
         // Handle the API response here
         this.imgDesc = res.data;
-        console.log(this.imgDesc, 'getproductimagedes');
+        // console.log(this.imgDesc, 'getproductimagedes');
 
-        this.variants = this.productdata.variants;
+        // this.variants = this.productdata.variants;
         // console.log("yaha se aa rha h",this.variants);
       },
       (error) => {
@@ -74,18 +74,45 @@ export class ProductComponent {
       }
     );
 
+
     this.productPage.productReviewSection().subscribe(
       (res) => {
         // Handle the API response here
         console.log(res, 'reviewSection');
+        this.productReview = res.data;
+        console.log(this.productReview)
+        //  console.log(this.reviewImage );
 
-       this.productReview =res.data;
-       console.log(this.productReview);
-       this.reviewImage= res.data.files
-       console.log(this.reviewImage,"yaha se aygi image ");
-       
-       
-      },
+
+//         for (let index = 0; index < this.productReview.length; index++) {
+//   console.log(this.productReview[index].files);
+//   this.reviewImage.push( this.productReview[index].files) 
+//   // this.reviewImage = this.productReview[index].files
+
+//   console.log(this.reviewImage);
+  
+  
+// }
+      
+
+
+
+// for (let i = 0; i <= this.productReview.length; i++) {
+
+//   for (let j = 0; j < this.productReview[i].files.length; j++) {
+//   if(this.productReview[i].files.length == 0){
+//     console.log('if part');
+    
+//   }else{
+//     console.log(this.productReview[i].files[j]);
+//   //  this.reviewImage =this.productReview[i].files[j]
+//    this.reviewImage.push(this.productReview[i].files[j]) 
+
+//   }
+  
+// }
+//      }
+    },
       (error) => {
         // Handle the API error here
         console.error(error);
