@@ -35,7 +35,7 @@ this.productbyId = productId
   }
 
   getProductimageDesbyProductId(productId: number): Observable<any> {
-    console.log(productId);
+    // console.log(productId);
 
     // const payload = { product_id: productId };
     return this.http.get(
@@ -47,7 +47,7 @@ this.productbyId = productId
 
 
   productReviewSection(payload = { product_id: this.productbyId }) {
-    console.log(this.productbyId);
+    // console.log(this.productbyId);
     
     // Convert the payload to JSON string
     const payloadString = JSON.stringify(payload);
@@ -62,6 +62,43 @@ this.productbyId = productId
       { headers: headers }
     );
   }
+
+
+  productReviewAnalysis(payload = { product_id: this.productbyId }) {
+  console.log(this.productbyId);
+  
+  // Convert the payload to JSON string
+  const payloadString = JSON.stringify(payload);
+
+  // Set the Content-Type header to application/json
+  const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+  // Send the POST request with the JSON payload and headers
+  return this.http.post<any>(
+    'https://test.negbuy.com/api/product_details_page_review_analysis',
+    payloadString,
+    { headers: headers }
+  );
+}
+
+
+productBasicInfo(payload = { product_id: this.productbyId }) {
+  // console.log(this.productbyId);
+  
+  // Convert the payload to JSON string
+  const payloadString = JSON.stringify(payload);
+
+  // Set the Content-Type header to application/json
+  const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+  // Send the POST request with the JSON payload and headers
+  return this.http.post<any>(
+    'https://test.negbuy.com/api/product_details_page_head_desc_details',
+    payloadString,
+    { headers: headers }
+  );
+}
+
 
 
   private handleError(error: HttpErrorResponse) {

@@ -10,12 +10,14 @@ import { MainheaderModule } from './mainheader/mainheader.module';
 import { SubheaderModule } from './subheader/subheader.module';
 
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { StarComponent } from './star/star.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 // module components
 @NgModule({
   declarations: [
     AppComponent,
+    StarComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterModule,
     MainheaderModule,
     SubheaderModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSkeletonLoaderModule
     
   ],
   providers: [HomeService],

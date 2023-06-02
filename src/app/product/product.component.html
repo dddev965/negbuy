@@ -1,32 +1,36 @@
 <app-mainheader></app-mainheader>
 <!-- <app-subheader></app-subheader> -->
 
-
-<div class="productPage bb">
+<div class="productPage ">
 
   <!-- <div class="submition-confirm">
       <button class="re-check">Re-check it again before submition</button>
       <button class="submit">Submit the product For verification</button>
     </div> -->
 
-  <div class="productPage-details ">
+  <div class="productPage-details " >
     <div class="productImages">
-      <div class="mainImg-container">
-        <img id="expandedImg" src="{{ variants.main_image }}" />
+      <div class="mainImg-container"  >
+        <img id="expandedImg" src="{{productdata.variants[index].main_image}}" />
       </div>
 
       <!-- The five columns -->
-      <div class="imgMap" *ngFor="let images of productdata.extra_images">
-
-
-        <div class="images">
-          <img src="{{images}}" alt="Nature" (click)="myFunction('{{images}}')" />
+      <div class="imgMap" >
+        
+        <div class="images" *ngFor="let extraImg of productdata.variants[index].extra_images">
+          <img src="{{extraImg}}" alt="Nature" (click)="myFunction('{{images}}')" />
+          <ngx-skeleton-loader count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
         </div>
-        <!-- <div class="images">
+
+        <!-- https://codepen.io/FredGenkin/pen/eaXYGV -->
+
+
+        
+         <!-- <div class="images">
             <img src="../../../assets/Images/product 1.png" alt="Snow"
               (click)="myFunction('assets/Images/product 1.png')" />
-          </div>
-          <div class="images">
+          </div> -->
+        <!--  <div class="images">
             <img src="../../../assets/Images/about-us-image-3.png" alt="Mountains"
               (click)="myFunction('assets/Images/about-us-image-3.png')" />
           </div>
@@ -40,34 +44,39 @@
           </div> -->
       </div>
     </div>
-    <div class="description">
+    <div class="description " >
       <div class="product-decription">
         <div class="name">
           {{ productdata.product_title }}
         </div>
         <div class="rateNreview">
           <div class="rate">
-            <div class="dicountedRate">${{productdata.price}}</div>
+            
+            <div class="dicountedRate">
+              (&#8377; {{ productdata.variants[ sizeColorIndex ].size_variants[sizeIndex].price }} )
+            </div>
             <div class="actualRate">
-              ({{ productdata.mrp }}&#8377;)
+              ( &#8377; {{ productdata.variants[ sizeColorIndex ].size_variants[sizeIndex].mrp }})
               <div class="lineThrough"></div>
             </div>
-            <div class="percentageOff">({{productdata.discount}}% off)</div>
+            <div class="percentageOff">  ( {{ productdata.variants[ sizeColorIndex ].size_variants[sizeIndex].discount }}% off)</div>
           </div>
           <div class="review">
             <div class="review-rating">
-              4.1
-              <span><img src="assets/Images/reviewStar.png" alt="" /></span>
+              {{reviewAnalysis.stars_out_of_5}}
+              <span><img src="assets/productPage/star.webp" alt="" /></span>
             </div>
-            <div class="ratingStats">35 rating and 5 reviews</div>
+            <div class="ratingStats">{{reviewAnalysis.total_ratings}} rating and {{reviewAnalysis.total_reviews}} reviews</div>
           </div>
         </div>
         <div class="condition">
           <img src="assets/Images/info image png.png" alt="" />minimum order 60
           pieces
         </div>
-        <div class="color">Colour : <div class="border d-inline-block" *ngFor="let color of variants">
-            {{color.color}}&nbsp;</div>
+        <div class="color">Colour : 
+          <button type="button" class="border d-inline-block" *ngFor="let color of variants" (click)="selectcolor(color.color)">
+            {{color.color}}&nbsp; 
+        </button >
         </div>
         <div class="multipleImg">
           <img src="assets/Images/sample_product_1.png" alt="" class="image" />
@@ -84,12 +93,11 @@
 
         <div class="color">Size </div>
 
-        <div class="sizeVariant">
-          <div class="productSize" (click)="selectSize('small')">Small</div>
+        <div class="sizeVariant" > 
+          <button  type="button" class="productSize" 
+          *ngFor="let size of  productdata.variants[index].size_variants" (click)="selectSize(size.size)"> {{size.size}} </button>
 
-          <div class="productSize selected" (click)="selectSize('medium')">Medium</div>
-          <div class="productSize">Large</div>
-          <div class="productSize">XLarge</div>
+          
         </div>
 
         <div class="basicInfo" *ngIf="medium">
@@ -212,12 +220,12 @@
   <div class="productInfoCard">
     <div class="title">Basic Information</div>
     <div class="infoRow">
-      <div class="infoCol">
-        <div class="infoCell">
-          <div class="key">Size</div>
-          <div class="value">Lorem Ipsum is</div>
+      <div class="infoCol" >
+        <div class="infoCell" *ngFor="let Info of basicInfo">
+          <div class="key"> {{Info.heading}} </div>
+          <div class="value"> {{Info.description}} </div>
         </div>
-        <div class="infoCell">
+        <!-- <div class="infoCell">
           <div class="key">Model Number</div>
           <div class="value">859548785612655</div>
         </div>
@@ -244,7 +252,7 @@
         <div class="infoCell">
           <div class="key">Country Detail</div>
           <div class="value">Delhi, India</div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -332,7 +340,7 @@
       </div>
     </div>
   </div>
-
+<!-- Similer product -->
   <div class="similarProducts">
     <div class="sameProdTitle">Similar Products</div>
 
@@ -465,11 +473,12 @@
     <div class="custReview">
       <div class="title">Costumer Review</div>
       <div class="rating">
-        <div class="starFilled">☆☆☆☆</div>
-        <div class="blankStar">☆</div>
-        <div>4 out of 5</div>
+        <div class="starFilled">
+          
+        </div>
+        <div>{{reviewAnalysis.stars_out_of_5}} out of 5</div>
       </div>
-      <div class="global">10 global costumer</div>
+      <div class="global">{{reviewAnalysis.total_ratings}} global costumer   </div>
       <div class="reviews">
         Reviews
 
@@ -477,23 +486,23 @@
 
         <div class="ratingDesc">
           <label for="5star">5<span>☆</span> </label>
-          <progress id="5star" value="82" max="100">82%</progress>
+          <progress id="5star" value= {{reviewAnalysis.star5.percent}} max="100">82%</progress>
         </div>
         <div class="ratingDesc">
           <label for="4star">4<span>☆</span></label>
-          <progress id="4star" value="60" max="100">60%</progress>
+          <progress id="4star" value={{reviewAnalysis.star4.percent}} max="100">60%</progress>
         </div>
         <div class="ratingDesc">
           <label for="3star">3<span>☆</span></label>
-          <progress id="3star" value="75" max="100">75%</progress>
+          <progress id="3star" value={{reviewAnalysis.star3.percent}} max="100">75%</progress>
         </div>
         <div class="ratingDesc">
           <label for="2star">2<span>☆</span></label>
-          <progress id="2star" value="32" max="100">32%</progress>
+          <progress id="2star" value={{reviewAnalysis.star2.percent}} max="100">32%</progress>
         </div>
         <div class="ratingDesc">
           <label for="1star">1<span>☆</span></label>
-          <progress id="1star" value="45" max="100">45%</progress>
+          <progress id="1star" value={{reviewAnalysis.star1.percent}} max="100">45%</progress>
         </div>
       </div>
 

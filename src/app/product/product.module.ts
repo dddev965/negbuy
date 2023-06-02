@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 // components moudles
 import { MainheaderModule } from '../mainheader/mainheader.module';
 import { SubheaderModule } from '../subheader/subheader.module';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SubheaderModule } from '../subheader/subheader.module';
     ProductRoutingModule,
     MatIconModule,
     MainheaderModule,
-    SubheaderModule
+    SubheaderModule,
+    NgxSkeletonLoaderModule
   ]
 })
 export class ProductModule { }

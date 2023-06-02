@@ -17,6 +17,26 @@ export class ProductComponent {
   // imageDescription
   imgDesc: any;
 
+  // prize 
+  index: number = 0;
+  selectedColor!: string;
+  productsize: number = 0;
+
+  sizeColorIndex: any = 0;
+  sizeIndex: any = 0;
+
+  // productReviewAnalysis
+  reviewAnalysis:any =[];
+//screen time
+startTime!: Date ;
+
+// basic information
+basicInfo:any =[];
+
+// skeleton Loader
+loader= true;
+
+
   medium: boolean = false;
   small: boolean = false;
   large: boolean = false;
@@ -33,19 +53,24 @@ export class ProductComponent {
 
   constructor(
     private productPage: ProductpageService,
-    private _ActivatedRoute: ActivatedRoute
+    private _ActivatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.productId = this._ActivatedRoute;
   }
   productDetails: any = [];
 
   ngOnInit() {
+    this.startTime = new Date();
+
+
     this.productId = this._ActivatedRoute.snapshot.paramMap.get('productId');
-    console.log(this.productId);
+    // console.log(this.productId);
 
     this.productPage.getProductById(this.productId).subscribe(
       (res) => {
         // Handle the API response here
+
         this.productdata = res.data;
         console.log(res);
 
@@ -65,8 +90,7 @@ export class ProductComponent {
         this.imgDesc = res.data;
         // console.log(this.imgDesc, 'getproductimagedes');
 
-        // this.variants = this.productdata.variants;
-        // console.log("yaha se aa rha h",this.variants);
+
       },
       (error) => {
         // Handle the API error here
@@ -78,46 +102,41 @@ export class ProductComponent {
     this.productPage.productReviewSection().subscribe(
       (res) => {
         // Handle the API response here
-        console.log(res, 'reviewSection');
+        // console.log(res, 'reviewSection');
         this.productReview = res.data;
-        console.log(this.productReview)
-        //  console.log(this.reviewImage );
+        // console.log(this.productReview)
 
-
-//         for (let index = 0; index < this.productReview.length; index++) {
-//   console.log(this.productReview[index].files);
-//   this.reviewImage.push( this.productReview[index].files) 
-//   // this.reviewImage = this.productReview[index].files
-
-//   console.log(this.reviewImage);
-  
-  
-// }
-      
-
-
-
-// for (let i = 0; i <= this.productReview.length; i++) {
-
-//   for (let j = 0; j < this.productReview[i].files.length; j++) {
-//   if(this.productReview[i].files.length == 0){
-//     console.log('if part');
-    
-//   }else{
-//     console.log(this.productReview[i].files[j]);
-//   //  this.reviewImage =this.productReview[i].files[j]
-//    this.reviewImage.push(this.productReview[i].files[j]) 
-
-//   }
-  
-// }
-//      }
-    },
+      },
       (error) => {
         // Handle the API error here
         console.error(error);
       }
     );
+
+
+  this.productPage.productReviewAnalysis().subscribe((res)=>{
+    // console.log(res);
+    
+    this.reviewAnalysis= res.data
+    console.log(this.reviewAnalysis);
+    
+  })
+
+  this.productPage.productBasicInfo().subscribe((res)=>{
+    // console.log(res.data);
+    this.basicInfo = res.data
+  })
+
+  }
+  ngAfterViewInit() {
+    window.addEventListener('blur', () => {
+      const endTime = new Date();
+      const timeSpent = endTime.getTime() - this.startTime.getTime();
+      // Here, you can send the timeSpent value to your server or perform any other desired action.
+
+      console.log(timeSpent);
+      
+    });
   }
 
   // getProductDetails() {
@@ -134,17 +153,19 @@ export class ProductComponent {
   //     }
   //   );
   // }
+  getsize() {
 
-  selectSize(size: any) {
-    if (size === 'medium') {
-      this.medium = true;
-      this.small = false;
-      // this.large-false;
-    } else if (size === 'small') {
-      this.small = true;
-      this.medium = false;
-    }
   }
+  // selectSize(size: any) {
+  //   if (size === 'medium') {
+  //     this.medium = true;
+  //     this.small = false;
+  //     // this.large-false;
+  //   } else if (size === 'small') {
+  //     this.small = true;
+  //     this.medium = false;
+  //   }
+  // }
 
   src = 'assets/Images/product.png';
   myFunction(imgs: any) {
@@ -191,4 +212,57 @@ export class ProductComponent {
   beforeChange(e: any) {
     console.log('beforeChange', e);
   }
+
+  color: boolean = true;
+  colorsss: number = 1;
+  // color
+
+
+
+  selectcolor(value: any) {
+    // this.color= false
+    // console.log( value);
+
+    for (let i = 0; i < this.variants.length; i++) {
+      
+      if (this.variants[i].color === value) {
+        console.log(this.variants[i].color);
+        this.selectedColor = this.variants[i].color
+        this.index = i
+
+      }
+
+    }
+
+  }
+
+  selectSize(value: any) {
+    console.log(value);
+    // const variantcolor = "Silver"
+    for (let i = 0; i <= this.variants.length; i++) {
+      // console.log(this.variants);
+      if (this.variants[i].color == this.selectedColor) {
+        for (let j = 0; j < this.variants[i].size_variants.length; j++) {
+          console.log(this.variants[i].size_variants[j]);
+
+          if (value == this.variants[i].size_variants[j].size) {
+            console.log(this.variants[i].size_variants[j].size_id);
+            this.sizeColorIndex = i;
+            this.sizeIndex = j
+
+            break;
+
+          }
+        }
+      }
+
+
+    }
+
+
+
+
+  }
+
+
 }
