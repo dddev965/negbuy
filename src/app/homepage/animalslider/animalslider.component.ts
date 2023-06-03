@@ -8,12 +8,15 @@ import { Router } from '@angular/router';
 })
 export class AnimalsliderComponent {
   getSlider:any=[];
+  loader= true;
   // productid:any=this.getSlider.data.product_id;
   constructor(private myservice: HomeService, private router:Router) {}
 
   ngOnInit() {
     this.myservice.sendPostRequest().subscribe((res) => {
       // console.log(res.data[].product_id);
+this.loader= false;
+
 this.getSlider= res;
 // console.log(this.getSlider.data[1].product_id);
 

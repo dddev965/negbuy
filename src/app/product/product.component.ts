@@ -15,10 +15,10 @@ export class ProductComponent {
 
   reviewImage: any = []
   // imageDescription
-  imgDesc: any;
+  imgDesc: any = [];
 
   // prize 
-  index: number = 0;
+  myindex: number = 0;
   selectedColor!: string;
   productsize: number = 0;
 
@@ -35,12 +35,8 @@ basicInfo:any =[];
 
 // skeleton Loader
 loader= true;
+mainiamge= true
 
-
-  medium: boolean = false;
-  small: boolean = false;
-  large: boolean = false;
-  eLarger: boolean = false;
 
   carouselOptions = {
     loop: true,
@@ -70,7 +66,7 @@ loader= true;
     this.productPage.getProductById(this.productId).subscribe(
       (res) => {
         // Handle the API response here
-
+      this.loader= false;
         this.productdata = res.data;
         console.log(res);
 
@@ -84,8 +80,10 @@ loader= true;
     );
 
     // imageDescription API
-    this.productPage.getProductimageDesbyProductId(this.productId).subscribe(
+    this.productPage.getProductimageDesbyProductId().subscribe(
       (res) => {
+        console.log(res);
+        
         // Handle the API response here
         this.imgDesc = res.data;
         // console.log(this.imgDesc, 'getproductimagedes');
@@ -228,7 +226,7 @@ loader= true;
       if (this.variants[i].color === value) {
         console.log(this.variants[i].color);
         this.selectedColor = this.variants[i].color
-        this.index = i
+        this.myindex = i
 
       }
 
@@ -264,5 +262,8 @@ loader= true;
 
   }
 
+  slectcolor(){
+
+  }
 
 }

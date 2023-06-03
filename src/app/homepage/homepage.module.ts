@@ -23,6 +23,7 @@ import { HomeGardensComponent } from './home-gardens/home-gardens.component';
 import { HealthBeatuyComponent } from './health-beatuy/health-beatuy.component';
 import { HardwareSliderComponent } from './hardware-slider/hardware-slider.component';
 import { RfqComponent } from './rfq/rfq.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { RfqComponent } from './rfq/rfq.component';
     CommonModule,
     HomepageRoutingModule,
     IvyCarouselModule,
-    SubheaderModule
+    SubheaderModule,
+    NgxSkeletonLoaderModule
   ]
 })
 export class HomepageModule { }

@@ -34,16 +34,33 @@ this.productbyId = productId
     // return this.http.get("https://jsonplaceholder.typicode.com/users"+productId)
   }
 
-  getProductimageDesbyProductId(productId: number): Observable<any> {
-    // console.log(productId);
+  getProductimageDesbyProductId(payload = { product_id: this.productbyId }) {
+    // console.log(this.productbyId);
+    
+    // Convert the payload to JSON string
+    const payloadString = JSON.stringify(payload);
 
-    // const payload = { product_id: productId };
-    return this.http.get(
-      'https://test.negbuy.com/api/product_details_page_img_desc?product_id=' +
-        productId
+    // Set the Content-Type header to application/json
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    // Send the POST request with the JSON payload and headers
+    return this.http.post<any>(
+      'https://test.negbuy.com/api/product_details_page_img_desc',
+      payloadString,
+      { headers: headers }
     );
-    // return this.http.get("https://jsonplaceholder.typicode.com/users"+productId)
   }
+
+
+  // getProductimageDesbyProductId(productId: number): Observable<any> {
+  //   // console.log(productId);
+
+  //   // const payload = { product_id: productId };
+  //   return this.http.post(
+  //     'https://test.negbuy.com/api/product_details_page_img_desc?product_id=' , productId
+  //   );
+  //   // return this.http.get("https://jsonplaceholder.typicode.com/users"+productId)
+  // }
 
 
   productReviewSection(payload = { product_id: this.productbyId }) {

@@ -12,7 +12,8 @@
         (click)="goToProduct(mySlider.product_id)"
      
       >
-      {{ i }}
+      <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+      
       <!-- (click)="goToProductPage(mySlider.product_id)" -->
         <img
           loading="lazy"

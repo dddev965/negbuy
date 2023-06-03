@@ -8,25 +8,29 @@
       <button class="submit">Submit the product For verification</button>
     </div> -->
 
-  <div class="productPage-details " >
+  <div class="productPage-details ">
     <div class="productImages">
-      <div class="mainImg-container"  >
-        <img id="expandedImg" src="{{productdata.variants[index].main_image}}" />
+
+      <div class="mainImg-container"  *ngFor="let extraImg of productdata.variants[myindex].extra_images.slice(1,2)">
+        <ngx-skeleton-loader [theme]="{   height: '100%'}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+        <!-- <img id="expandedImg" src="{{productdata.variants[myindex].main_image}}" /> -->
+        <img id="expandedImg" src="{{extraImg}}" />
       </div>
 
       <!-- The five columns -->
-      <div class="imgMap" >
-        
-        <div class="images" *ngFor="let extraImg of productdata.variants[index].extra_images">
-          <img src="{{extraImg}}" alt="Nature" (click)="myFunction('{{images}}')" />
+      <div class="imgMap">
+
+        <div class="images mb-2" *ngFor="let extraImg of productdata.variants[myindex].extra_images; let i = index">
           <ngx-skeleton-loader count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+          <img src="{{extraImg}} " alt="Nature"  (click)="myFunction('{{images}}')" />
+          <!-- {{i}} -->
         </div>
 
         <!-- https://codepen.io/FredGenkin/pen/eaXYGV -->
 
 
-        
-         <!-- <div class="images">
+
+        <!-- <div class="images">
             <img src="../../../assets/Images/product 1.png" alt="Snow"
               (click)="myFunction('assets/Images/product 1.png')" />
           </div> -->
@@ -44,14 +48,17 @@
           </div> -->
       </div>
     </div>
-    <div class="description " >
+    <div class="description ">
       <div class="product-decription">
+        <ngx-skeleton-loader [theme]="{  height: '100%', }" count="1" appearance="line"
+          *ngIf="loader"></ngx-skeleton-loader>
+
         <div class="name">
           {{ productdata.product_title }}
         </div>
         <div class="rateNreview">
           <div class="rate">
-            
+
             <div class="dicountedRate">
               (&#8377; {{ productdata.variants[ sizeColorIndex ].size_variants[sizeIndex].price }} )
             </div>
@@ -59,89 +66,51 @@
               ( &#8377; {{ productdata.variants[ sizeColorIndex ].size_variants[sizeIndex].mrp }})
               <div class="lineThrough"></div>
             </div>
-            <div class="percentageOff">  ( {{ productdata.variants[ sizeColorIndex ].size_variants[sizeIndex].discount }}% off)</div>
+            <div class="percentageOff"> ( {{ productdata.variants[ sizeColorIndex ].size_variants[sizeIndex].discount
+              }}% off)</div>
           </div>
           <div class="review">
             <div class="review-rating">
               {{reviewAnalysis.stars_out_of_5}}
               <span><img src="assets/productPage/star.webp" alt="" /></span>
             </div>
-            <div class="ratingStats">{{reviewAnalysis.total_ratings}} rating and {{reviewAnalysis.total_reviews}} reviews</div>
+            <div class="ratingStats">{{reviewAnalysis.total_ratings}} rating and {{reviewAnalysis.total_reviews}}
+              reviews</div>
           </div>
         </div>
         <div class="condition">
           <img src="assets/Images/info image png.png" alt="" />minimum order 60
           pieces
         </div>
-        <div class="color">Colour : 
-          <button type="button" class="border d-inline-block" *ngFor="let color of variants" (click)="selectcolor(color.color)">
-            {{color.color}}&nbsp; 
-        </button >
+        <div class="color">Colour :
+          <button type="button" class="border btn  d-inline-block  me-2" routerLinkActive="active"  *ngFor="let color of variants"
+            (click)="selectcolor(color.color); slectcolor()">
+            {{color.color}}
+          </button>  &nbsp;
         </div>
-        <div class="multipleImg">
-          <img src="assets/Images/sample_product_1.png" alt="" class="image" />
-          <img src="assets/Images/sample_product_1.png" alt="" class="image" />
-          <img src="assets/Images/sample_product_1.png" alt="" class="image" />
-          <img src="assets/Images/sample_product_1.png" alt="" class="image" />
-          <img src="assets/Images/sample_product_1.png" alt="" class="image" />
-          <img src="assets/Images/sample_product_1.png" alt="" class="image" />
-          <img src="assets/Images/sample_product_1.png" alt="" class="image" />
-          <img src="assets/Images/sample_product_1.png" alt="" class="image" />
-          <img src="assets/Images/sample_product_1.png" alt="" class="image" />
-          <img src="assets/Images/sample_product_1.png" alt="" class="image" />
-        </div>
+      
 
         <div class="color">Size </div>
 
-        <div class="sizeVariant" > 
-          <button  type="button" class="productSize" 
-          *ngFor="let size of  productdata.variants[index].size_variants" (click)="selectSize(size.size)"> {{size.size}} </button>
+        <div class="sizeVariant">
+          <button type="button" class="productSize" *ngFor="let size of  productdata.variants[myindex].size_variants"
+            (click)="selectSize(size.size)"> {{size.size}} </button>
 
-          
+
         </div>
-
-        <div class="basicInfo" *ngIf="medium">
+        <div class="basicInfo bb" >
           <div class="title">Basic Information</div>
-          <div class="info">
-            <div class="property">Size</div>
-            <div class="value">Lorem Ipsum is</div>
-          </div>
-          <div class="info">
-            <div class="property">Model Number</div>
-            <div class="value">859548785612655</div>
-          </div>
-          <div class="info">
-            <div class="property">Model Size</div>
-            <div class="value">8784522564544</div>
-          </div>
-          <div class="info">
-            <div class="property">Colour</div>
-            <div class="value">Brown</div>
+          <div class="info" *ngFor="let Info of basicInfo.slice(0,4);">
+            <div class="property">{{Info.heading}}</div>
+            <div class="value">{{Info.description}}</div>
           </div>
         </div>
 
 
-        <div class="basicInfo" *ngIf="small">
-          <div class="title">Basic Information smalll</div>
-          <div class="info">
-            <div class="property">Size</div>
-            <div class="value">Lorem Ipsum is</div>
-          </div>
-          <div class="info">
-            <div class="property">Model Number</div>
-            <div class="value">859548785612655</div>
-          </div>
-          <div class="info">
-            <div class="property">Model Size</div>
-            <div class="value">8784522564544</div>
-          </div>
-          <div class="info">
-            <div class="property">Colour</div>
-            <div class="value">Brown</div>
-          </div>
-        </div>
+       
       </div>
       <div class="product-quantity">
+        <ngx-skeleton-loader [theme]="{ height: '100%'}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
         <div class="product-quantity-card">
           <div class="product-quantity-card-title">Quantity</div>
           <div class="editQuantity">
@@ -175,13 +144,20 @@
     </div>
   </div>
   <div class="productInfo">
+    <ngx-skeleton-loader [theme]="{ height: '100%'}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+
     <div class="head">Product Description</div>
     <div class="cards">
+
       {{productdata.detailed_desc}}
     </div>
     <div class="head">Product Details</div>
     <div class="cards">
+      <ngx-skeleton-loader [theme]="{ height: '100%'}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+
       <div class="multiMedia">
+        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+
         <!-- <iframe src="{{productdata.video}}"></iframe> -->
         <video width="320" height="240" controls src={{productdata.video}}>
           Your browser does not support the video tag.
@@ -193,15 +169,21 @@
       </div>
       <div class="cards-details">
         <div class="title">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
+         Demonstration of PRODUCT working
         </div>
         <div class="cards-details-desc">
+        <ngx-skeleton-loader [theme]="{ height: '100%'}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+
           {{productdata.detailed_desc}}
         </div>
       </div>
     </div>
     <div class="cards" *ngFor="let imagedesc of imgDesc ">
+      <ngx-skeleton-loader [theme]="{ height: '100%'}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+
       <div class="multiMedia">
+        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+
         <img src="{{imagedesc.image}}" alt="" />
       </div>
       <div class="cards-details">
@@ -220,7 +202,9 @@
   <div class="productInfoCard">
     <div class="title">Basic Information</div>
     <div class="infoRow">
-      <div class="infoCol" >
+      <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+
+      <div class="infoCol">
         <div class="infoCell" *ngFor="let Info of basicInfo">
           <div class="key"> {{Info.heading}} </div>
           <div class="value"> {{Info.description}} </div>
@@ -340,7 +324,7 @@
       </div>
     </div>
   </div>
-<!-- Similer product -->
+  <!-- Similer product -->
   <div class="similarProducts">
     <div class="sameProdTitle">Similar Products</div>
 
@@ -469,16 +453,18 @@
     </div>
   </div>
 
-  <div class="footer">
+  <div class="footer bb">
     <div class="custReview">
       <div class="title">Costumer Review</div>
       <div class="rating">
+        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+
         <div class="starFilled">
-          
+
         </div>
         <div>{{reviewAnalysis.stars_out_of_5}} out of 5</div>
       </div>
-      <div class="global">{{reviewAnalysis.total_ratings}} global costumer   </div>
+      <div class="global">{{reviewAnalysis.total_ratings}} global costumer </div>
       <div class="reviews">
         Reviews
 
@@ -486,7 +472,9 @@
 
         <div class="ratingDesc">
           <label for="5star">5<span>☆</span> </label>
-          <progress id="5star" value= {{reviewAnalysis.star5.percent}} max="100">82%</progress>
+        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+
+          <progress id="5star" value={{reviewAnalysis.star5.percent}} max="100">82%</progress>
         </div>
         <div class="ratingDesc">
           <label for="4star">4<span>☆</span></label>
@@ -521,6 +509,8 @@
 
 
         <div class="rating">
+        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+
           <div class="rating-star">
             <div class="star">{{productReviews.rating}} ☆</div>
             <div>{{productReviews.title}}</div>
@@ -528,25 +518,33 @@
           <div><mat-icon>more_horiz</mat-icon></div>
         </div>
         <div class="reviewCard-desc">
+        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+
           <div class="reviewCard-images ">
+        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+
             <div class="mainImg ">
-              <img  src="{{productReviews.files[0]}}" alt="" />
+              <img src="{{productReviews.files[0]}}" alt="" />
 
             </div>
-            
-           <div class="imgs-box">
-            <div class=" imgs" *ngFor="let reviewImg of productReviews.files.slice(1);">
-              <img src="{{reviewImg}}" alt="kuch to h" />
+
+            <div class="imgs-box">
+              <div class=" imgs" *ngFor="let reviewImg of productReviews.files.slice(1);">
+                <img src="{{reviewImg}}" alt="kuch to h" />
+              </div>
+
+
             </div>
 
-            
-           </div>
-           
           </div>
           <div class="text">
+        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+
             {{productReviews.description}}
 
             <div class="customer">
+        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+
               <div class="customer-name"> {{productReviews.user}} {{productReviews.city}} </div>
               <div class="commentTime"> {{productReviews.time}} </div>
             </div>
