@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MainheaderModule } from '../mainheader/mainheader.module';
 import { SubheaderModule } from '../subheader/subheader.module';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     MatIconModule,
     MainheaderModule,
     SubheaderModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    IvyCarouselModule
   ]
 })
 export class ProductModule { }

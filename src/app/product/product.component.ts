@@ -38,6 +38,15 @@ loader= true;
 mainiamge= true
 
 
+// main to extra image 
+selectedImageSrc: string | undefined
+
+
+// quanity increasing and deincreasing
+count:number = 60  
+limite=false
+
+// images: { src: string }[];
   carouselOptions = {
     loop: true,
     autoplay: true,
@@ -55,7 +64,7 @@ mainiamge= true
     this.productId = this._ActivatedRoute;
   }
   productDetails: any = [];
-
+  
   ngOnInit() {
     this.startTime = new Date();
 
@@ -69,9 +78,12 @@ mainiamge= true
       this.loader= false;
         this.productdata = res.data;
         console.log(res);
-
+        // this.images = res.data.variants.extra_images
         this.variants = this.productdata.variants;
         // console.log("yaha se aa rha h",this.variants);
+        console.log(this.selectedImageSrc);
+        this.selectedImageSrc = this.productdata.variants[this.myindex].extra_images[0]
+        
       },
       (error) => {
         // Handle the API error here
@@ -224,9 +236,13 @@ mainiamge= true
     for (let i = 0; i < this.variants.length; i++) {
       
       if (this.variants[i].color === value) {
-        console.log(this.variants[i].color);
+        // console.log(this.variants[i].color);
         this.selectedColor = this.variants[i].color
         this.myindex = i
+        this.selectedImageSrc = this.productdata.variants[this.myindex].extra_images[0]
+
+        // console.log(this.myindex);
+        
 
       }
 
@@ -266,4 +282,20 @@ mainiamge= true
 
   }
 
+  setImageSrc(event: MouseEvent){
+    const clickedImage = event.target as HTMLImageElement;
+    this.selectedImageSrc = clickedImage.src;
+    console.log(this.selectedImageSrc);
+  }
+
+  increase() {
+    this.count++;
+   
+  }
+  descrease() {
+    this.count--;
+//     if(this.count == 60){
+// // this.limite=true
+//     }
+  }
 }

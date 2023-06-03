@@ -10,42 +10,35 @@
 
   <div class="productPage-details ">
     <div class="productImages">
+      <ngx-skeleton-loader [theme]="{   height: '100%'}" count="1" appearance="line"
+        *ngIf="loader"></ngx-skeleton-loader>
 
-      <div class="mainImg-container"  *ngFor="let extraImg of productdata.variants[myindex].extra_images.slice(1,2)">
-        <ngx-skeleton-loader [theme]="{   height: '100%'}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+      <div class="mainImg-container">
         <!-- <img id="expandedImg" src="{{productdata.variants[myindex].main_image}}" /> -->
-        <img id="expandedImg" src="{{extraImg}}" />
+        <img id="expandedImg" [src]="selectedImageSrc" />
       </div>
 
       <!-- The five columns -->
       <div class="imgMap">
+        <!-- *ngFor="let extraImg of productdata.variants[myindex].extra_images; let i = index" -->
+        <div class="images mb-2">
+          <!-- <ngx-skeleton-loader count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader> -->
+          <!-- <img src="{{extraImg}} " alt="Nature"  (click)="myFunction('{{images}}')" /> -->
 
-        <div class="images mb-2" *ngFor="let extraImg of productdata.variants[myindex].extra_images; let i = index">
-          <ngx-skeleton-loader count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
-          <img src="{{extraImg}} " alt="Nature"  (click)="myFunction('{{images}}')" />
-          <!-- {{i}} -->
+          <carousel class="c" [cellWidth]="100" [height]="50">
+            <div class="carousel-cell" *ngFor="let extraImg of productdata.variants[myindex].extra_images">
+              <img src="{{extraImg}}" (click)="setImageSrc($event)">">
+            </div>
+
+          </carousel>
         </div>
 
-        <!-- https://codepen.io/FredGenkin/pen/eaXYGV -->
 
 
 
-        <!-- <div class="images">
-            <img src="../../../assets/Images/product 1.png" alt="Snow"
-              (click)="myFunction('assets/Images/product 1.png')" />
-          </div> -->
-        <!--  <div class="images">
-            <img src="../../../assets/Images/about-us-image-3.png" alt="Mountains"
-              (click)="myFunction('assets/Images/about-us-image-3.png')" />
-          </div>
-          <div class="images">
-            <img src="../../../assets/Images/about-us-image-4.png" alt="Lights"
-              (click)="myFunction('assets/Images/about-us-image-4.png')" />
-          </div>
-          <div class="images">
-            <img src="../../../assets/Images/about-us-image-4.png" alt="Lights"
-              (click)="myFunction('assets/Images/about-us-image-4.png')" />
-          </div> -->
+
+
+
       </div>
     </div>
     <div class="description ">
@@ -83,12 +76,12 @@
           pieces
         </div>
         <div class="color">Colour :
-          <button type="button" class="border btn  d-inline-block  me-2" routerLinkActive="active"  *ngFor="let color of variants"
-            (click)="selectcolor(color.color); slectcolor()">
+          <button type="button"   class="border btn btn-secondary-emphasis  d-inline-block  me-2"  
+            *ngFor="let color of variants" (click)="selectcolor(color.color); slectcolor()">
             {{color.color}}
-          </button>  &nbsp;
+          </button> &nbsp;
         </div>
-      
+
 
         <div class="color">Size </div>
 
@@ -98,7 +91,7 @@
 
 
         </div>
-        <div class="basicInfo bb" >
+        <div class="basicInfo bb">
           <div class="title">Basic Information</div>
           <div class="info" *ngFor="let Info of basicInfo.slice(0,4);">
             <div class="property">{{Info.heading}}</div>
@@ -107,16 +100,17 @@
         </div>
 
 
-       
+
       </div>
       <div class="product-quantity">
-        <ngx-skeleton-loader [theme]="{ height: '100%'}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+        <ngx-skeleton-loader [theme]="{ height: '100%'}" count="1" appearance="line"
+          *ngIf="loader"></ngx-skeleton-loader>
         <div class="product-quantity-card">
           <div class="product-quantity-card-title">Quantity</div>
           <div class="editQuantity">
-            <div class="modify">-</div>
-            <div class="quantityNow">60</div>
-            <div class="modify increase">+</div>
+            <button type="button" class="modify increase btn "  (click)="descrease() ">-</button >
+            <div class="quantityNow"> {{count}} </div>
+            <div class="modify increase" (click)="increase()">+</div>
           </div>
 
           <div class="buyNow button">Buy now</div>
@@ -156,7 +150,8 @@
       <ngx-skeleton-loader [theme]="{ height: '100%'}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
 
       <div class="multiMedia">
-        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line"
+          *ngIf="loader"></ngx-skeleton-loader>
 
         <!-- <iframe src="{{productdata.video}}"></iframe> -->
         <video width="320" height="240" controls src={{productdata.video}}>
@@ -169,10 +164,11 @@
       </div>
       <div class="cards-details">
         <div class="title">
-         Demonstration of PRODUCT working
+          Demonstration of PRODUCT working
         </div>
         <div class="cards-details-desc">
-        <ngx-skeleton-loader [theme]="{ height: '100%'}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+          <ngx-skeleton-loader [theme]="{ height: '100%'}" count="1" appearance="line"
+            *ngIf="loader"></ngx-skeleton-loader>
 
           {{productdata.detailed_desc}}
         </div>
@@ -182,7 +178,8 @@
       <ngx-skeleton-loader [theme]="{ height: '100%'}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
 
       <div class="multiMedia">
-        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line"
+          *ngIf="loader"></ngx-skeleton-loader>
 
         <img src="{{imagedesc.image}}" alt="" />
       </div>
@@ -202,7 +199,8 @@
   <div class="productInfoCard">
     <div class="title">Basic Information</div>
     <div class="infoRow">
-      <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+      <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line"
+        *ngIf="loader"></ngx-skeleton-loader>
 
       <div class="infoCol">
         <div class="infoCell" *ngFor="let Info of basicInfo">
@@ -457,7 +455,8 @@
     <div class="custReview">
       <div class="title">Costumer Review</div>
       <div class="rating">
-        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line"
+          *ngIf="loader"></ngx-skeleton-loader>
 
         <div class="starFilled">
 
@@ -472,7 +471,8 @@
 
         <div class="ratingDesc">
           <label for="5star">5<span>☆</span> </label>
-        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+          <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line"
+            *ngIf="loader"></ngx-skeleton-loader>
 
           <progress id="5star" value={{reviewAnalysis.star5.percent}} max="100">82%</progress>
         </div>
@@ -509,7 +509,8 @@
 
 
         <div class="rating">
-        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+          <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line"
+            *ngIf="loader"></ngx-skeleton-loader>
 
           <div class="rating-star">
             <div class="star">{{productReviews.rating}} ☆</div>
@@ -518,10 +519,12 @@
           <div><mat-icon>more_horiz</mat-icon></div>
         </div>
         <div class="reviewCard-desc">
-        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+          <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line"
+            *ngIf="loader"></ngx-skeleton-loader>
 
           <div class="reviewCard-images ">
-        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+            <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line"
+              *ngIf="loader"></ngx-skeleton-loader>
 
             <div class="mainImg ">
               <img src="{{productReviews.files[0]}}" alt="" />
@@ -538,12 +541,14 @@
 
           </div>
           <div class="text">
-        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+            <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line"
+              *ngIf="loader"></ngx-skeleton-loader>
 
             {{productReviews.description}}
 
             <div class="customer">
-        <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+              <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line"
+                *ngIf="loader"></ngx-skeleton-loader>
 
               <div class="customer-name"> {{productReviews.user}} {{productReviews.city}} </div>
               <div class="commentTime"> {{productReviews.time}} </div>
