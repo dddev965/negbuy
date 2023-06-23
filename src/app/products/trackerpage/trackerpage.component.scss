@@ -1,0 +1,310 @@
+$textfamily: "Montserrat";
+$textColor: #f54646;
+$fontSize: 15px;
+$fontSize2: 20px;
+
+@mixin fontstyle($font-size, $font-weight) {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: 115.9%;
+  /* or 21px */
+  color: rgba(38, 38, 38, 0.8);
+}
+@mixin showdow {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 6px rgba(159, 152, 152, 0.126);
+}
+
+@mixin selection {
+  border: 1px solid rgba(38, 38, 38, 0.23);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
+}
+
+@mixin inputbox {
+  border: 1px solid rgba(216, 216, 216, 0.81);
+  border-radius: 1px;
+}
+.mycontainer {
+  width: 98%;
+  margin: 0 1%;
+}
+.tracker {
+  // border: 1px solid red;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ul {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0.5% 0;
+    &:nth-child(2){
+     a{
+      color: $textColor;
+     }
+    }
+   
+    li {
+      margin: 1% 0;
+      // width: 15%;
+      // border: 1px solid red;
+      a {
+        font-family: $textfamily;
+        font-size: $fontSize;
+      }
+     
+    }
+    span{
+      margin: 1% 0;
+    }
+   
+  }
+}
+
+.allmap {
+  display: flex;
+  margin: 1% 0 0 0;
+  justify-content: space-between;
+  .earth {
+    width: 33%;
+    height: 300px;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    @include showdow();
+    img {
+      // width: 50%;
+      height: 250px;
+      margin: auto 0;
+    }
+  }
+  .world {
+    height: 300px;
+    width: 65%;
+    @include showdow();
+    // border: solid black;
+  }
+  .map {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.form {
+  margin-top: 2%;
+
+  display: flex;
+
+  .left {
+    width: 50%;
+    .shipingmode {
+      // display: flex;
+      @include showdow();
+      width: 95%;
+      // margin: 1%;
+      height: 200px;
+
+      .shipingForm {
+        margin: 1% 2%;
+        p {
+          @include fontstyle(20px, 500);
+          margin: 2%;
+        }
+        select {
+          width: 98%;
+          height: 40px;
+          margin: 1%;
+          @include selection();
+          option {
+            @include fontstyle(14px, 500)
+          }
+        }
+        label {
+          @include fontstyle(20px, 500);
+          margin: 1%;
+        }
+      }
+    }
+    .QnS {
+      width: 95%;
+      margin: 3% 0%;
+      li {
+        border: 1px solid rgba(38, 38, 38, 0.23);
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+        border-radius: 2px;
+        padding: 1% 3%;
+        height: 40px;
+
+        p {
+          @include fontstyle(14px, 400);
+          margin-left: 2%;
+          b{
+            font-weight: 500;
+          }
+        
+        }
+        span{
+          b{
+            font-weight: 500;
+          }
+        }
+      }
+      li:nth-child(1) {
+        @include fontstyle(18px, 500);
+        color: $textColor;
+        border: 1px solid rgba(38, 38, 38, 0.23);
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+        border-radius: 2px;
+        padding: 1% 4%;
+        height: 40px;
+      }
+      li:last-child {
+        height: 80px;
+        p {
+          display: inline;
+          margin-bottom: 1%;
+        }
+        span {
+          float: right;
+        }
+      }
+    }
+  }
+
+  .right {
+    width: 50%;
+    .deliveryAddres {
+      @include showdow();
+      width: 100%;
+      margin: 0%;
+      grid-column-start: 1;
+      grid-column-end: 3;
+
+      .delivery-form {
+        margin: 1%;
+        p {
+          @include fontstyle(20px, 500);
+          margin: 2%;
+        }
+        .form-input {
+          display: flex;
+          font-family: $textfamily;
+          margin: 2%;
+          input {
+            height: 40px;
+            @include inputbox();
+          }
+          textarea {
+            width: 96%;
+            @include inputbox();
+          }
+        }
+      }
+    }
+  }
+}
+.location-container {
+  width: 100% !important;
+  margin-top: 1%;
+  @include showdow();
+  .headerDiv {
+    @include fontstyle(20px, 550);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1% 0;
+  }
+  .location-address {
+    @include showdow();
+    display: flex;
+    justify-content: center;
+    // height: 104px;
+    padding: 2%;
+
+    .col {
+      text-align: center;
+      p {
+        @include showdow();
+        @include fontstyle(20px, 400);
+        padding: 7% 4%;
+        
+        // border: 1px solid black;
+      }
+      span {
+        @include fontstyle(12px, 500);
+        color: $textColor;
+      }
+    }
+    .line {
+      margin: 1%;
+    }
+  }
+}
+.delivertPartner {
+  margin-top: 2%;
+  @include showdow();
+  .heading {
+    @include showdow();
+    display: flex;
+    padding: 1.5%;
+    justify-content: center;
+    @include fontstyle(20px, 600);
+  }
+  .partners {
+    display: flex;
+    .col-6 {
+      padding: 1%;
+      margin: 0 0%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      .col-11 {
+        margin: 1% 4%;
+        height: 50px;
+        @include showdow();
+        height: 40px;
+        @include fontstyle(14px, 500);
+        display: flex;
+        input {
+          margin-left: 2%;
+        }
+        label {
+          @include fontstyle(14, 500);
+          margin-left: 1%;
+          display: flex;
+          align-items: center;
+          width: 80%;
+          
+        }
+        span {
+          display: flex;
+          align-items: center;
+          float: right;
+        }
+      }
+    }
+  }
+}
+
+.procced {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+  height: 40px;
+
+  a {
+    width: 18%;
+    background-color: $textColor;
+    border-radius: 2px;
+    border: $textColor;
+    @include fontstyle(20px, 600);
+    color: white;
+    text-align: center;
+    padding-top: .5%;
+  }
+}

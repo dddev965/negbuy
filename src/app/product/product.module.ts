@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProductRoutingModule } from './product-routing.module';
 import { ProductComponent } from './product.component';
+
 import { MatIconModule } from '@angular/material/icon';
 // components moudles
 import { MainheaderModule } from '../mainheader/mainheader.module';

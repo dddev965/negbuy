@@ -22,7 +22,7 @@ this.getSlider= res;
 
 // console.log(this.productid);
 
-     
+
     });
   }
 
@@ -31,14 +31,14 @@ this.getSlider= res;
   //   window.open("/product", "_blank")
 
   //   // console.log(product_id);
-    
+
   // }
   goToProduct(productId: number) {
     // this.router.navigate(['/product', productId]);
     // window.open("/product", "_blank")
-    window.open(`/product/${productId}`, '_blank');
+    window.open(`/products/${productId}`, '_blank');
     // console.log(productId);
-    
+
   }
-  
+
 }

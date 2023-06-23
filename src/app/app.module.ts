@@ -8,11 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterModule } from './footer/footer.module';
 import { MainheaderModule } from './mainheader/mainheader.module';
 import { SubheaderModule } from './subheader/subheader.module';
-
 import { ReactiveFormsModule } from '@angular/forms';
 import { StarComponent } from './star/star.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-
 // module components
 @NgModule({
   declarations: [
@@ -28,7 +26,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     MainheaderModule,
     SubheaderModule,
     ReactiveFormsModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
     
   ],
   providers: [HomeService],

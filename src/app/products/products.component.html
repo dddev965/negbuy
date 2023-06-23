@@ -1,5 +1,5 @@
 <app-mainheader></app-mainheader>
-<!-- <app-subheader></app-subheader> -->
+
 <div class="productPage">
   <div class="productPage-details">
     <div class="productImages">
@@ -11,26 +11,31 @@
       ></ngx-skeleton-loader>
 
       <div class="mainImg-container">
-        <!-- <img id="expandedImg" src="{{productdata.variants[variantIndex].main_image}}" /> -->
-        <img id="expandedImg" [src]="selectedImageSrc" />
+        <img
+          id="expandedImg"
+          src="{{
+            productdata.variants[variantIndex].extra_images[extraImage]
+          }}"
+        />
       </div>
 
-      <!-- The five columns -->
       <div class="imgMap">
-        <!-- *ngFor="let extraImg of productdata.variants[myindex].extra_images; let i = index" -->
         <div class="images mb-2">
-          <!-- <ngx-skeleton-loader count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader> -->
-          <!-- <img src="{{extraImg}} " alt="Nature"  (click)="myFunction('{{images}}')" /> -->
-
           <carousel class="c" [cellWidth]="100" [height]="50">
-            <div class="carousel-cell" *ngFor="let extraImg of productdata.variants[myindex].extra_images; let i = index">
-              <img src="{{extraImg}}" (click)="setImageSrc($event)"> 
+            <div
+              class="carousel-cell"
+              *ngFor="
+                let extraImg of productdata.variants[variantIndex].extra_images;
+                let i = index
+              "
+            >
+              <img src="{{ extraImg }}" (click)="setImageSrc(i)" />
             </div>
-
           </carousel>
         </div>
       </div>
     </div>
+
     <div class="description">
       <div class="product-decription">
         <ngx-skeleton-loader
@@ -74,14 +79,17 @@
               {{ reviewAnalysis.stars_out_of_5 }}
               <span><img src="assets/productPage/star.webp" alt="" /></span>
             </div>
-            <div class="ratingStats">
-              <!-- {{reviewAnalysis.total_ratings}} rating and {{reviewAnalysis.total_reviews}}
-              reviews -->
-            </div>
+            <div class="ratingStats"></div>
           </div>
         </div>
-        <div class="condition">
-          <img src="assets/Images/info image png.png" alt="" />minimum order 60
+        <div class="condition" *ngIf=" productdata.variants[variantIndex].size_variants[sizeIndex]
+        .moq !== null">
+          <img src="assets/Images/info image png.png" alt="" />
+          minimum order
+          <p class="d-inline-block"> {{
+            productdata.variants[variantIndex].size_variants[sizeIndex]
+              .moq
+          }}</p>
           pieces
         </div>
 
@@ -104,16 +112,13 @@
         </div>
         <div class="color">
           Colour :
-         
 
           <button
             type="button"
             class="border btn d-inline-block me-2"
             *ngFor="let color of variants; let i = index"
-            (click)="selectColor(i)"
+            (click)="selectColor(i);setquantiy()"
           >
-            
-
             <img
               width="20px"
               height="20px"
@@ -131,7 +136,9 @@
             type="button"
             *ngFor="let size of variants[0].size_variants; let i = index"
             class="productSize"
-            (click)="selectSizeIndex(i)"
+
+            (click)="selectSizeIndex(i);setquantiy()"
+            [(ngModel)]="selectedSize"
           >
             {{ size.size }}
           </button>
@@ -153,14 +160,21 @@
               type="button"
               class="modify increase btn"
               (click)="descrease()"
+              *ngIf="count !== moq"
             >
               -
             </button>
-            <div class="quantityNow">{{ count }}</div>
+            <div class="quantityNow" [(ngModel)]="selectedQuantity">{{ count }}</div>
             <div class="modify increase" (click)="increase()">+</div>
           </div>
 
-          <div class="buyNow button">Buy now</div>
+          <div class="buyNow button">
+            <!-- <a routerLink="buyNow" >Buy now</a> -->
+            <!-- <a (click)="buyNow()" routerLink="buyNow" >Buy now</a> -->
+            <a   (click)="buyNow()" routerLink="buyNow" >Buy now</a>
+          </div>
+        <!-- (click)="goToProduct(mySlider.product_id)" -->
+
           <div class="addToFav button">Add to favorites</div>
         </div>
         <div class="product-quantity-card">
@@ -213,13 +227,9 @@
           *ngIf="loader"
         ></ngx-skeleton-loader>
 
-        <!-- <iframe src="{{productdata.video}}"></iframe> -->
-        <video width="320" height="240" controls src="{{ productdata.video }}">
+        <video width="300" height="240" controls src="{{ productdata.video }}">
           Your browser does not support the video tag.
         </video>
-        <!-- <video width="320" height="240" controls src={{video}}>
-            Your browser does not support the video tag.
-          </video> -->
       </div>
       <div class="cards-details">
         <div class="title">Demonstration of PRODUCT working</div>
@@ -280,34 +290,6 @@
           <div class="key">{{ Info.heading }}</div>
           <div class="value">{{ Info.description }}</div>
         </div>
-        <!-- <div class="infoCell">
-          <div class="key">Model Number</div>
-          <div class="value">859548785612655</div>
-        </div>
-        <div class="infoCell">
-          <div class="key">Model Size</div>
-          <div class="value">8784522564544</div>
-        </div>
-        <div class="infoCell">
-          <div class="key">Colour</div>
-          <div class="value">Brown</div>
-        </div>
-        <div class="infoCell">
-          <div class="key">Bottle number</div>
-          <div class="value">878985542512332</div>
-        </div>
-        <div class="infoCell">
-          <div class="key">Plastic Details</div>
-          <div class="value">Level A plastic</div>
-        </div>
-        <div class="infoCell">
-          <div class="key">Material</div>
-          <div class="value">Plastic sillicon</div>
-        </div>
-        <div class="infoCell">
-          <div class="key">Country Detail</div>
-          <div class="value">Delhi, India</div>
-        </div> -->
       </div>
     </div>
   </div>
@@ -604,8 +586,6 @@
       <div class="reviews">
         Reviews
 
-        <!-- <mat-progress-bar mode="determinate" value="40"></mat-progress-bar> -->
-
         <div class="ratingDesc">
           <label for="5star">5<span>☆</span> </label>
           <ngx-skeleton-loader
@@ -699,7 +679,10 @@
             *ngIf="loader"
           ></ngx-skeleton-loader>
 
-          <div class="reviewCard-images">
+          <div
+            class="reviewCard-images"
+            *ngIf="productReviews.files && productReviews.files.length > 0"
+          >
             <ngx-skeleton-loader
               [theme]="{   height: '100%',}"
               count="1"
@@ -720,7 +703,15 @@
               </div>
             </div>
           </div>
-          <div class="text">
+          <div
+            class="text"
+            [ngStyle]="{
+              width:
+                productReviews.files && productReviews.files.length === 0
+                  ? '100%'
+                  : '60%'
+            }"
+          >
             <ngx-skeleton-loader
               [theme]="{   height: '100%',}"
               count="1"
@@ -749,3 +740,4 @@
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>

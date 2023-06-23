@@ -1,0 +1,156 @@
+@import "../../mixin.scss";
+
+.container-fluid {
+  .tracker {
+    // border: 1px solid red;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ul {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 0.5% 0;
+      &:nth-child(2) {
+        a {
+          color: $textColor;
+        }
+      }
+
+      li {
+        margin: 1% 0;
+        // width: 15%;
+        // border: 1px solid red;
+        a {
+          font-family: $textfamily;
+          font-size: $fontSize;
+        }
+      }
+      span {
+        margin: 1% 0;
+      }
+    }
+  }
+  .container-fluid {
+    .col-3 {
+      width: 20%;
+
+      .heading {
+        @include fontstyle(16px, 500);
+        width: 100%;
+      }
+      .reco {
+        @include fontstyle(12px, 500);
+        text-align: center;
+        margin: 0;
+        padding: 2%;
+        background: $textColor;
+        color: white;
+      }
+      .payMethod-reco {
+        @include fontstyle(16px, 500);
+        @include showdow();
+        text-align: center;
+        height: 60px;
+        margin-bottom: 6%;
+        .reco {
+          height: 25px;
+        }
+        div {
+          padding: 2%;
+          color: $textColor;
+        }
+      }
+      .payMethod {
+        text-align: center;
+        @include fontstyle(14px, 400);
+        @include showdow();
+        padding: 6%;
+        height: 50px;
+        margin-bottom: 6%;
+      }
+
+      div {
+        height: 200px;
+      }
+    }
+  }
+  .col-6 {
+    width: calc(100% - 50%);
+    .container{
+      @include showdow();
+      display: flex;
+      justify-content: center;
+      vertical-align: center;
+      flex-direction: column;
+      align-content: flex-start;
+      flex-wrap: nowrap;
+      align-items: center;
+  p{
+    @include fontstyle(20px,500);
+    margin-top:3%
+  }
+      img{
+        width: 80%
+      }
+    }
+  }
+
+
+  .col {
+    .product-delt {
+      .heading {
+        @include fontstyle(16px, 500);
+        width: 100%;
+      }
+      .delt-container {
+        // height: 200px;
+        @include showdow();
+        .row {
+          justify-content: center;
+          .mycol1 {
+            width: 30%;
+            height: 100px;
+            img {
+              width: 81%;
+              margin: 12% 6% 0;
+            }
+          }
+          .mycol2 {
+            width: 62%;
+            text-align: center;
+            padding: 9% 0;
+            @include fontstyle(14px,500);
+          }
+        }
+        .container-fluid {
+          @include fontstyle(14px,500);
+          .row {
+            :nth-child(2) {
+              p {
+                float: right;
+              }
+            }
+          }
+         .row:last-child{
+           color: $textColor;
+           @include showdow();
+           padding-top: 2%;
+          }
+        }
+        
+      }
+    }
+    .makePayment{
+      width: 50%;
+      margin: 6% 24%;
+      text-align: center;
+      padding: 3%;
+      background-color: $textColor;
+  color: white;
+  @include fontstyle(16px,600);
+  // @include showdow();
+    }
+  }
+}

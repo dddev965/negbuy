@@ -1,5 +1,5 @@
 <p class="animal-heading mt-5">Animal and Pet care</p>
-
+<h1>devaddsf</h1>
 <!-- <div class="hr bb"></div> -->
 <div class="container-fluid mb-4">
   <!-- <button (click)="getData()">Get Data</button> -->
@@ -7,13 +7,13 @@
     <carousel class="main-cont pt-4" [autoplay]="false">
       <div
         class="carousel-cell"
-       
+
         *ngFor="let mySlider of getSlider.data let i = index"
         (click)="goToProduct(mySlider.product_id)"
-     
+
       >
       <ngx-skeleton-loader [theme]="{   height: '100%',}" count="1" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
-      
+
       <!-- (click)="goToProductPage(mySlider.product_id)" -->
         <img
           loading="lazy"
@@ -58,7 +58,7 @@
           <span class="previousPrice">{{ mySlider.mrp }}</span>
           <span class="offerpri">({{ mySlider.discount }}% Off )</span>
         </div>
-    
+
       </div>
     </carousel>
   </ng-container>

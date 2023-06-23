@@ -1,0 +1,30 @@
+$textfamily: "Montserrat";
+$textColor: #f54646;
+$fontSize: 15px;
+$fontSize2: 20px;
+
+@mixin fontstyle($font-size, $font-weight) {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: 115.9%;
+  /* or 21px */
+  // color: rgba(38, 38, 38, 0.8);
+}
+@mixin showdow {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 6px rgba(159, 152, 152, 0.126);
+}
+
+@mixin selection {
+  border: 1px solid rgba(38, 38, 38, 0.23);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
+}
+
+@mixin inputbox {
+  border: 1px solid rgba(216, 216, 216, 0.81);
+  border-radius: 1px;
+}

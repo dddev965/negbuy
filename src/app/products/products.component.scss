@@ -244,12 +244,15 @@ body {
               margin: 1%;
               text-align: center;
             }
+            :last-child{
+              border: none;
+            }
           }
         }
         .condition {
           font-size: 12px;
           color: #6a6a6a;
-          margin: 20px 0;
+          margin: 0px 0;
           img {
             width: 13px;
             height: 13px;
@@ -450,7 +453,7 @@ body {
           font-weight: 500;
           color: #000;
           margin-bottom: 37px;
-        
+
         }
 &-desc{
   display: -webkit-box;
@@ -602,12 +605,12 @@ body {
         .starFilled {
           color: #ffc300;
           --percent: calc(var(--rating) / 5 * 100%);
-  
+
   display: inline-block;
   font-size: var(--star-size);
   font-family: Times; // make sure ★ appears correctly
   line-height: 1;
-  
+
   &::before {
     content: '★★★★★';
     letter-spacing: 3px;
@@ -716,7 +719,7 @@ body {
         }
         &-images {
           display: flex;
-          
+
           width: 40%;
           gap: 10px;
           overflow: hidden;
@@ -792,12 +795,12 @@ progress::-webkit-progress-value {
 
 .Stars {
   --percent: calc(var(--rating) / 5 * 100%);
-  
+
   display: inline-block;
   font-size: var(--star-size);
   font-family: Times; // make sure ★ appears correctly
   line-height: 1;
-  
+
   &::before {
     content: '★★★★★';
     letter-spacing: 3px;

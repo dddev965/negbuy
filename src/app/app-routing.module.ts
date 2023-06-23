@@ -9,9 +9,12 @@ const routes: Routes = [
 
 
   {
-    path:"product/:productId",
-    loadChildren:() => import("./product/product.module").then(m=> m.ProductModule) 
+    path:"products/:productId",
+    // loadChildren:() => import("./product/product.module").then(m=> m.ProductModule)
+    loadChildren:() => import("./products/products.module").then(m=> m.ProductsModule)
   }
+ 
+ 
 ];
 
 @NgModule({
